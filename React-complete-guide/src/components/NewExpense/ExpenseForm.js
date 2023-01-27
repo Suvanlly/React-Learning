@@ -36,6 +36,7 @@ const ExpenseForm = (props) => {
   };
 
   const submitHandler = (event) => {
+    // prevent form being submitted
     event.preventDefault();
 
     const expenseData = {
@@ -44,6 +45,7 @@ const ExpenseForm = (props) => {
       date: new Date(enteredDate)
     };
     // console.log(expenseData);
+    // Lift state(expense data) up to the NewExpense component
     props.onGetExpenseData(expenseData);
     // reset the value of input after user click submit
     setEnteredTitle('');
