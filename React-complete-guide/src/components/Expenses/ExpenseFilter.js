@@ -4,7 +4,7 @@ import './ExpenseFilter.css';
 
 const ExpensesFilter = (props) => {
   const filterHandler = (event) => {
-    const filterYear = event.target.value;
+    const filterYear = parseInt(event.target.value);
     // lift state up to Expense.js by calling function onGetFilterYear
     props.onGetFilterYear(filterYear);
   }
