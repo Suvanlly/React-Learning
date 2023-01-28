@@ -15,6 +15,18 @@ function Expenses(props) {
     (item) => item.date.getFullYear() === filterYear
   );
   // console.log(newExpensesArray)
+  let expensesContent = <p>No expenses found!</p>;
+
+  if (newExpensesArray.length > 0) {
+    expensesContent =  newExpensesArray.map((item) => (
+      <ExpenseItem
+        key={item.id}
+        title={item.title}
+        amount={item.amount}
+        date={item.date}
+      />
+    ))
+  }
 
   return (
     <div className="expenses">
@@ -22,18 +34,19 @@ function Expenses(props) {
         selected={filterYear}
         onGetFilterYear={getFilterYearHandler}
       />
-      {newExpensesArray.map((item) => (
-        <ExpenseItem
-          key={item.id}
-          title={item.title}
-          amount={item.amount}
-          date={item.date}
-        />
-      ))}
-      {/* <ExpenseItem title={props.items[0].title} amount={props.items[0].amount} date={props.items[0].date}/>
-      <ExpenseItem title={props.items[1].title} amount={props.items[1].amount} date={props.items[1].date}/>
-      <ExpenseItem title={props.items[2].title} amount={props.items[2].amount} date={props.items[2].date}/>
-      <ExpenseItem title={props.items[3].title} amount={props.items[3].amount} date={props.items[3].date}/> */}
+      {expensesContent}
+      {/* {newExpensesArray.length === 0 ? (
+        <p>No Expense found!</p>
+      ) : (
+        newExpensesArray.map((item) => (
+          <ExpenseItem
+            key={item.id}
+            title={item.title}
+            amount={item.amount}
+            date={item.date}
+          />
+        ))
+      )} */}
     </div>
   );
 }
