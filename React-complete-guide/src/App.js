@@ -32,7 +32,6 @@ function App() {
   const [expenses, setExpenses] = useState(Dummy_Expenses);
 
   const addExpenseHandler = (expenseData) => {
-    console.log(expenseData)
     // Use spread operator to create a new expense array
     // setExpenses((Dummy_Expenses) => [...Dummy_Expenses, expenseData])
     setExpenses((prevExpenses) => {
