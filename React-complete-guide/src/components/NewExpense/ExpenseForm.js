@@ -43,6 +43,7 @@ const ExpenseForm = (props) => {
       id: Math.random().toString(),
       title: enteredTitle,
       amount: enteredAmount,
+      // amount: +enteredAmount is better cuz sometimes the values added are string not numbers when adding multiple values
       date: new Date(enteredDate)
     };
     // console.log(expenseData);
