@@ -9,6 +9,7 @@ const CourseGoalList = props => {
       {props.items.map(goal => (
         <CourseGoalItem
           key={goal.id}
+          // id is passed as props to CourseGoalItem
           id={goal.id}
           onDelete={props.onDeleteItem}
         >

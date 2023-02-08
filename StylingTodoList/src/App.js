@@ -18,6 +18,7 @@ const App = () => {
     });
   };
 
+  // The "goalId" is getting from CourseGoalItem, that lift goalId up to App.js
   const deleteItemHandler = (goalId) => {
     setCourseGoals(prevGoals => {
       // this Line change "id" of each courseGoal object
