@@ -21,7 +21,7 @@ const App = () => {
   // The "goalId" is getting from CourseGoalItem, that lift goalId up to App.js
   const deleteItemHandler = (goalId) => {
     setCourseGoals(prevGoals => {
-      // this Line change "id" of each courseGoal object
+      // this Line change "id" of each courseGoal object and return the new array exclude the one clicked
       const updatedGoals = prevGoals.filter(goal => goal.id !== goalId);
       return updatedGoals;
     });
