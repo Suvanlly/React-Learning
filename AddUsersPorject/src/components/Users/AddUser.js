@@ -6,7 +6,7 @@ import classes from './AddUser.module.css';
 const AddUser = (props) => {
   const [enteredUsername, setEnteredUsername] = useState('');
   const [enteredAge, setEnteredAge] = useState('');
-  const addUserHandler = (e) => {
+  const submitUserHandler = (e) => {
     // prevent the page reloading when click submit
     e.preventDefault();
     if (enteredUsername.trim().length === 0 || enteredAge.trim().length === 0) {
@@ -17,6 +17,8 @@ const AddUser = (props) => {
       return;
     }
     console.log(enteredUsername, enteredAge)
+    // lift states up to app.js when user click submit button
+    props.onAddUser(enteredUsername, enteredAge)
     // it won't reset the input values unless you add value to input
     setEnteredAge('');
     setEnteredUsername('');
@@ -31,7 +33,7 @@ const AddUser = (props) => {
 
   return (
     <Card className={classes.input}>
-      <form onSubmit={addUserHandler}>
+      <form onSubmit={submitUserHandler}>
         <label htmlFor='username'>Username</label>
         <input id="username" type="text" value={enteredUsername} onChange={inputNameHandler}/>
         <label htmlFor='age'>Age</label>
