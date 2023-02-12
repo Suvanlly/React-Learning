@@ -7,14 +7,24 @@ import classes from './AddUser.module.css';
 const AddUser = (props) => {
   const [enteredUsername, setEnteredUsername] = useState('');
   const [enteredAge, setEnteredAge] = useState('');
+  const [error, setError] = useState(false);
+
   const submitUserHandler = (e) => {
     // prevent the page reloading when click submit
     e.preventDefault();
     if (enteredUsername.trim().length === 0 || enteredAge.trim().length === 0) {
+      setError({
+        title: 'Invalid input',
+        message: 'Please enter a valid name and age'
+      })
       // return nothing means don't need to console log or reset the input field
       return;
     }
     if (+enteredAge < 1) {
+      setError({
+        title: 'Invalid age',
+        message: 'Please enter a valid age'
+      })
       return;
     }
     console.log(enteredUsername, enteredAge)
@@ -31,10 +41,14 @@ const AddUser = (props) => {
     setEnteredAge(e.target.value);
   }
 
+  // Pass this function as props to ErrorModal component
+  const errorHandler = () => {
+    setError(false);
+  }
 
   return (
     <>
-      <ErrorModal title="An error occured!" message="Something went wrong!"/>
+      {error && <ErrorModal title={error.title} message={error.message} onCloseModal={errorHandler}/>}
       <Card className={classes.input}>
         <form onSubmit={submitUserHandler}>
           <label htmlFor='username'>Username</label>
