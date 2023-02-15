@@ -7,13 +7,13 @@ import MainHeader from './components/MainHeader/MainHeader';
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  // empty array means the following function will only run once, when reloading page
   useEffect(() => {
     const userLoggedInStatus = localStorage.getItem('isLoggedIn');
 
     if (userLoggedInStatus === 'true') {
       setIsLoggedIn(true);
     }
+  // empty array means the following function will only run once when reloading page
   },[]);
 
   const loginHandler = (email, password) => {
