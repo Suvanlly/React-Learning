@@ -13,14 +13,14 @@ const Login = (props) => {
 
   useEffect(() => {
     const timeoutHandler = setTimeout(() => {
-      console.log('checking validity');
+      // console.log('checking validity');
       setFormIsValid(
         enteredEmail.includes('@') && enteredPassword.trim().length > 6
       );
     }, 500);
     return () => {
       // Clear the old timer everytime before new SetTimeout function run
-      console.log('cleanup');
+      // console.log('cleanup');
       clearTimeout(timeoutHandler)
     }
   // depenencies should include things will change, setFormIsValid is only triggered if either of these changed
