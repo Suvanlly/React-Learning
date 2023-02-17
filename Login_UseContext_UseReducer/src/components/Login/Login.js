@@ -60,27 +60,23 @@ const Login = (props) => {
     isValid: null,
   });
 
+  // Object destructuring
+  const {isValid: emailIsValid} = emailState;
+  const {isValid: passwordIsValid} = passwordState;
+
   useEffect(() => {
-    console.log("EFFECT RUNNING");
+    const identifier = setTimeout(() => {
+      console.log('Checking form validity!');
+      setFormIsValid(
+        emailIsValid && passwordIsValid
+      );
+    }, 500);
 
     return () => {
-      console.log("EFFECT CLEANUP");
+      console.log('CLEANUP');
+      clearTimeout(identifier);
     };
-  }, []);
-
-  // useEffect(() => {
-  //   const identifier = setTimeout(() => {
-  //     console.log('Checking form validity!');
-  //     setFormIsValid(
-  //       enteredEmail.includes('@') && enteredPassword.trim().length > 6
-  //     );
-  //   }, 500);
-
-  //   return () => {
-  //     console.log('CLEANUP');
-  //     clearTimeout(identifier);
-  //   };
-  // }, [enteredEmail, enteredPassword]);
+  }, [emailIsValid, passwordIsValid]);
 
   const emailChangeHandler = (event) => {
     dispatchEmail({type: 'USER_INPUT', value: event.target.value});
