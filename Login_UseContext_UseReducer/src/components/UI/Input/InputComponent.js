@@ -2,6 +2,7 @@ import React from "react";
 
 import classes from "./InputComponent.module.css";
 
+// this is a re-usable input component
 const InputComponent = (props) => {
   return (
     <div
