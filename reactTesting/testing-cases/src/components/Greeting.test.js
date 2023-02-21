@@ -17,6 +17,8 @@ describe('Greeting component', () => {
     expect(testElement).toBeInTheDocument();
   });
 
+  // Now this test case includes two components: 
+  // Greeting and Output, so it can be integration test
   test('renders "good to see you" if the button was NOT clicked', () => {
     render(<Greeting />);
 
@@ -25,6 +27,8 @@ describe('Greeting component', () => {
     expect(outputElement).toBeInTheDocument();
   });
 
+  // Now this test case includes two components: 
+  // Greeting and Output, so it can be integration test
   test('renders "Changed!" if the button was clicked', () => {
     // Arrange
     render(<Greeting />);
@@ -38,6 +42,7 @@ describe('Greeting component', () => {
     expect(outputElement).toBeInTheDocument();
   })
 
+  
   test('should not render "good to see you" if the button was clicked', () => {
     // Arrange
     render(<Greeting />);
