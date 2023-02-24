@@ -25,6 +25,7 @@ export default function App() {
 
 
     // THIS WORKS!
+    
     // const NewListArray = listArray.filter(
     //   (item) => item !== listArray[indexOfItem]
     // );
@@ -32,6 +33,8 @@ export default function App() {
 
       
     // THIS WILL NOT WORK!!!
+    // We should avoid mutating your state 'listArray' directly. You should create a new Array
+
     // listArray.splice(indexOfItem, 1); 
     // setListArray(listArray);
 

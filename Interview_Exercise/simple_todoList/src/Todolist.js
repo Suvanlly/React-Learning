@@ -7,6 +7,7 @@ export default function Todolist(props) {
       {props.listArray.map((item, index) => (
         <Todoitem
           key={index}
+          // why we need 'id' = index ? because 'key' can not be passed as props to child, key is a key word
           id={index}
           item={item}
           onDelete={props.onDelete}
