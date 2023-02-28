@@ -1,10 +1,9 @@
-import {useState} from 'react';
-import NewTodo from './components/NewTodo';
-import Todos from './components/Todos';
-import Todo from './data_models/todo';
+import { useState } from "react";
+import NewTodo from "./components/NewTodo";
+import Todos from "./components/Todos";
+import Todo from "./data_models/todo";
 
 function App() {
-
   const [todos, setTodos] = useState<Todo[]>([]);
 
   // Hardcoded Todo List items
@@ -15,13 +14,19 @@ function App() {
 
     setTodos((prevTodos) => {
       return prevTodos.concat(newTodo);
-    })
-  }
+    });
+  };
+
+  const deleteTodoHandler = (listItemId: string) => {
+    setTodos((prevTodos) =>
+      prevTodos.filter((listItem) => listItem.id !== listItemId)
+    );
+  };
 
   return (
     <div>
-      <NewTodo onAddTodo={addTodoHandler}/>
-      <Todos items={todos}/>
+      <NewTodo onAddTodo={addTodoHandler} />
+      <Todos items={todos} onDeleteTodo={deleteTodoHandler} />
     </div>
   );
 }
