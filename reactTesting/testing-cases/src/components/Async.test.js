@@ -16,5 +16,37 @@ describe('Async component', () => {
     // findAllByRole can work because it return a promise, and will check results multiple times
     const listItemElements = await screen.findAllByRole('listitem');
     expect(listItemElements).not.toHaveLength(0)
-  })
-})
+  });
+
+  test("renders list of posts fetched asynchronously", async () => {
+    const mockPosts = [
+      {
+        userId: 1,
+        id: 1,
+        title: "Mock Post 1",
+        body: "Mock Post 1 Body",
+      },
+      {
+        userId: 1,
+        id: 2,
+        title: "Mock Post 2",
+        body: "Mock Post 2 Body",
+      },
+    ];
+    jest.spyOn(global, "fetch").mockResolvedValue({
+      json: jest.fn().mockResolvedValue(mockPosts),
+    });
+  
+    render(<Async />);
+    const postList = await screen.findByRole("list");
+    expect(postList).toBeInTheDocument();
+  
+    mockPosts.forEach((post) => {
+      const postTitle = screen.getByText(post.title);
+      expect(postTitle).toBeInTheDocument();
+    });
+  
+    global.fetch.mockRestore();
+  });
+});
+
