@@ -44,7 +44,8 @@ const App = () => {
       </section>
       <section id="goals">
         {content}
-        {/* {courseGoals.length > 0 && (
+        {/* another way:
+        {courseGoals.length > 0 && (
           <CourseGoalList
             items={courseGoals}
             onDeleteItem={deleteItemHandler}
