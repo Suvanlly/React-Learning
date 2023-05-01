@@ -1,7 +1,15 @@
+import { Container } from "react-bootstrap"
+import { Routes, Route } from "react-router-dom"
 
 function App() {
   return (
-    <h1>Hi</h1>
+    <Container>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/store" element={<Store />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
+    </Container>
   )
 }
 
