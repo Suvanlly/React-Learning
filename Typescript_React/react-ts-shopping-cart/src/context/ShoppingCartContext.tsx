@@ -24,6 +24,7 @@ type ShoppingCartContext = {
 
 const ShoppingCartContext = createContext({} as ShoppingCartContext)
 
+// Custom Hooks
 export function useShoppingCart() {
   return useContext(ShoppingCartContext)
 }
@@ -34,6 +35,7 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
     []
   )
 
+  // this is the red badge shows the total number of items on Navbar
   const cartQuantity = cartItems.reduce(
     (quantity, item) => item.quantity + quantity,
     0
@@ -41,15 +43,19 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
 
   const openCart = () => setIsOpen(true)
   const closeCart = () => setIsOpen(false)
+
   function getItemQuantity(id: number) {
     return cartItems.find(item => item.id === id)?.quantity || 0
   }
+
   function increaseCartQuantity(id: number) {
     setCartItems(currItems => {
+      // find if this is a new item, if yes, add this new item
       if (currItems.find(item => item.id === id) == null) {
         return [...currItems, { id, quantity: 1 }]
       } else {
         return currItems.map(item => {
+          // if this is an existing item, add quantity by one
           if (item.id === id) {
             return { ...item, quantity: item.quantity + 1 }
           } else {
@@ -61,6 +67,7 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
   }
   function decreaseCartQuantity(id: number) {
     setCartItems(currItems => {
+      // if the remaining item is 1, decrease will remove this item from list
       if (currItems.find(item => item.id === id)?.quantity === 1) {
         return currItems.filter(item => item.id !== id)
       } else {
