@@ -16,11 +16,11 @@ export function StoreItem({ id, name, price, imgUrl }: StoreItemProps) {
     decreaseCartQuantity,
     removeFromCart,
   } = useShoppingCart();
-  
+
   const quantity = getItemQuantity(id)
 
   return (
-    <Card className="h-100">
+    <Card className="h-100 shadow-sm">
       <Card.Img
         variant="top"
         src={imgUrl}

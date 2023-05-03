@@ -8,6 +8,7 @@ type ShoppingCartProps = {
   isOpen: boolean
 }
 
+// This is the slide panel on the right side when clicking shopping cart
 export function ShoppingCart({ isOpen }: ShoppingCartProps) {
   const { closeCart, cartItems } = useShoppingCart()
   return (
