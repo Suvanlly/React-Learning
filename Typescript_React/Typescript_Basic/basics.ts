@@ -29,6 +29,7 @@ let tuple2: [string, string][] = [['a', 'b']]
 // this should be avoid
 let person: any;
 
+// Object
 person = {
   name: 'Max',
   age: 32
@@ -44,7 +45,52 @@ person_specific = {
   age: 30
 }
 
+// ---------- Union ----------------
 // Union types (allow multiple types)
 let course: string | number = 'react';
 // now it won't have the error
 course = 1234;
+
+
+// ---------- Enum 枚举 --------------
+// 用数字来表示一些状态
+
+enum LiveStatus {
+  SUCCESS = 0,
+  FAIL = -1,
+  STREAMING = 1
+}
+
+// ---------- Type ----------------
+type A = number | string
+type B = boolean | string
+
+let a: A
+a = 999;
+a = 'string'
+
+// type不能重复定义，这是和interface的区别
+type Card = {
+  name: string;
+  description: string;
+}
+
+// ---------- Interface ----------------
+// interface 是可以重复的，可以补充property，变成新的类型
+interface User {
+  name: string;
+  age: number;
+  smoke: boolean;
+}
+
+interface User {
+  gender: string;
+}
+
+// object里面的property就是扩充后的User里的所有property
+const object: User = {
+  name: 'sophie',
+  age: 20,
+  smoke: false,
+  gender: 'female'
+}
