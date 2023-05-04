@@ -12,12 +12,19 @@ let userName: string;
 
 userName: 'abc';
 
+let boo: boolean = true;
+
 
 // More complex types
 
 let hobbies: string[]; // this means array of strings
 
 hobbies = ['Sports', 'Cooking'];
+
+let arr2: string[][] = [['aa', 'bb']]
+
+let tuple: [number, string, boolean] = [2, 'a', true];
+let tuple2: [string, string][] = [['a', 'b']]
 
 // this should be avoid
 let person: any;
