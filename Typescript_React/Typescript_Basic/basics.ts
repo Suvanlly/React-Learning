@@ -61,7 +61,7 @@ enum LiveStatus {
   STREAMING = 1
 }
 
-// ---------- Type ----------------
+// ------------ Type ----------------
 type A = number | string
 type B = boolean | string
 
@@ -93,4 +93,29 @@ const object: User = {
   age: 20,
   smoke: false,
   gender: 'female'
+}
+
+// ---------- Function ----------------
+function hello (a: string, b: string) {
+  return a + b;
+}
+
+// this specify the return value tyoe must be number
+function hello2 (a: number, b: string): number {
+  return 100;
+}
+
+// ---------- Unknown ----------------
+
+type Data = {
+  userId: number,
+  id: number,
+  title: string,
+  completed: boolean
+}
+
+async function getData() {
+  const res = await fetch('https://jsonplaceholder.typicode.com/todos/1')
+  // 下面这行代表推断出获取的数据和Data的类型是相似的
+  const data = await res.json() as Data
 }
