@@ -17,6 +17,6 @@ export default function reducer(state = [], action) {
   else if (action.type === actions.BUG_REMOVED)
     return state.filter(bug => bug.id !== action.payload.id)
 
-    // if the type of action is neither of above
+    // if the type of action is neither of above.
     return state;
 }
